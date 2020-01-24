@@ -1,8 +1,10 @@
 #/usr/bin/bash
 
-TASK="algebra__linear_1d"
-MODEL="size-50"
-CHECKPOINT="demo-model-size-50_step_10000.pt"
+# WARNING: CHECK ALL VARIABLES AND COMMANDS CAREFULLY
+
+TASK="calculus__differentiate_10000"
+MODEL="size-100"
+CHECKPOINT="model-size-100_step_85000.pt"
 EXPDIR="data/demo/${TASK}"
 
 # Test 1: ~10M parameters
@@ -11,4 +13,10 @@ EXPDIR="data/demo/${TASK}"
 # Test 2: ~300k parameters
 # onmt_train -data data/demo/demo -save_model demo-model-size-50 -train_steps 10000 -valid_steps 1000 -enc_rnn_size 50 -dec_rnn_size 50
 
-onmt_train -data ${EXPDIR}/data -train_from ${EXPDIR}/${CHECKPOINT} -save_model ${EXPDIR}/model-${MODEL} -train_steps 20000 -valid_steps 5000 -enc_rnn_size 50 -dec_rnn_size 50
+# onmt_train -data ${EXPDIR}/data -train_from ${EXPDIR}/${CHECKPOINT} -save_model ${EXPDIR}/model-${MODEL} -train_steps 20000 -valid_steps 5000 -enc_rnn_size 50 -dec_rnn_size 50
+
+# Test 3: 762543 parameters
+# onmt_train -data ${EXPDIR}/data -train_from ${EXPDIR}/${CHECKPOINT} -save_model ${EXPDIR}/model-${MODEL} -train_steps 100000 -valid_steps 10000 -enc_rnn_size 100 -dec_rnn_size 100
+
+# Test 4: can it memorise?
+onmt_train -data ${EXPDIR}/data -save_model ${EXPDIR}/model-${MODEL} -train_steps 10000 -valid_steps 1000 -enc_rnn_size 100 -dec_rnn_size 100 -early_stopping 4 -early_stopping_criteria ppl
