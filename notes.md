@@ -41,6 +41,7 @@ Ben's
 - Apply a simple decomposition, use iterated distillation and amplification on it
 - Try Neural Module Networks
 - Put expressions in SymPy to simplify intermediate steps.
+- Apply DeepDream to the model: what question maximises a given answer?
 
 Meeting 17/1
 
