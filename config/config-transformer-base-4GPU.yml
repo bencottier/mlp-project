@@ -1,5 +1,7 @@
 data: exp/calculus__differentiate/data
 save_model: exp/calculus__differentiate/model
+log_file: exp/calculus__differentiate/log.txt
+# train_from: exp/calculus__differentiate/model_step_1000.pt
 save_checkpoint_steps: 10000
 keep_checkpoint: 3
 seed: 20200127
