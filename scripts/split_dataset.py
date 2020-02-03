@@ -91,6 +91,7 @@ def main(args):
                 if f.name.endswith('.txt'):
                     compressed_folder, _ = os.path.split(f.name)
                     output_folder = os.path.join(args.output_folder, compressed_folder)
+                    output_folder += '-split'
                     os.makedirs(output_folder, exist_ok=True)
                     split_file(folder, f, output_folder, 
                         args.train_split, args.token, tar=tar)
