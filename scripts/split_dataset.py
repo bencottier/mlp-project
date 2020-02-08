@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import tarfile
 import argparse
 import os
 
@@ -19,20 +19,25 @@ def parse_args():
     return args
 
 
-def split_file(input_folder, input_file, output_folder, split=None, token=None):
+def split_file(input_folder, input_file, output_folder, split=None, 
+    token=None, tar=None):
     print(f'Splitting {input_file}')
 
     if split is None:
         split = 1.0
 
-    with open(os.path.join(input_folder, input_file), 'r') as f:
+    with open(os.path.join(input_folder, input_file), 'rb') if tar is None \
+        else tar.extractfile(input_file) as f:
         # WARNING readlines does NOT remove the newline character which
         # will then be used when writelines will save the output file,  
         # writelines() does NOT add newline on its now
         if token == 'char':
-            lines = [' '.join(line.replace(' ', '_')) for line in f.readlines()]
+            lines = [' '.join(line.decode().replace(' ', '_')) for line in f.readlines()]
         else:
             lines = f.readlines()
+
+    if tar is not None:
+        _, input_file = os.path.split(input_file.name)
 
     # Separate into source and target data
     src_lines = lines[::2]
@@ -42,6 +47,8 @@ def split_file(input_folder, input_file, output_folder, split=None, token=None):
         src_file = input_file.replace('.txt', f'_src_{name}.txt')
         tgt_file = input_file.replace('.txt', f'_tgt_{name}.txt')
 
+        print(os.path.join(output_folder, src_file))
+
         with open(os.path.join(output_folder, src_file), 'w') as f:
             f.writelines(src_lines)
 
@@ -49,7 +56,7 @@ def split_file(input_folder, input_file, output_folder, split=None, token=None):
             f.writelines(tgt_lines)
 
     # Split into training and optional validation sets, then write
-    if split < 1.0:
+    if split < 1.0 and 'train' in output_folder:
         num_train = int(len(src_lines) * split)
         write_data(src_lines[:num_train], tgt_lines[:num_train], 'train')
         write_data(src_lines[num_train:], tgt_lines[num_train:], 'valid')
@@ -77,6 +84,17 @@ def main(args):
     elif os.path.isfile(args.input) and args.input.endswith('.txt'):
         folder, f = os.path.split(args.input)
         split_file(folder, f, args.output_folder, args.train_split, args.token)
+    elif os.path.isfile(args.input) and '.tar' in args.input:
+        folder, _ = os.path.split(args.input)
+        with tarfile.open(args.input) as tar:
+            for f in tar:
+                if f.name.endswith('.txt'):
+                    compressed_folder, _ = os.path.split(f.name)
+                    output_folder = os.path.join(args.output_folder, compressed_folder)
+                    output_folder += '-split'
+                    os.makedirs(output_folder, exist_ok=True)
+                    split_file(folder, f, output_folder, 
+                        args.train_split, args.token, tar=tar)
     else:
         print(f'The input provided is neither a folder nor a file: {args.input}')
 
