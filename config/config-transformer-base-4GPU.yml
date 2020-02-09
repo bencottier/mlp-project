@@ -8,7 +8,7 @@ seed: 20200127
 train_steps: 500000
 valid_steps: 10000
 # warmup_steps: 8000
-report_every: 100
+report_every: 1000
 
 decoder_type: transformer
 encoder_type: transformer
@@ -38,9 +38,9 @@ param_init: 0.0
 param_init_glorot: 'true'
 position_encoding: 'true'
 
-# world_size: 4
-# gpu_ranks:
-# - 0
-# - 1
-# - 2
-# - 3
+world_size: 4
+gpu_ranks:
+- 0
+- 1
+- 2
+- 3
