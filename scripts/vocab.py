@@ -10,6 +10,7 @@ for name in ['src', 'tgt']:
     freqs = vocab.freqs
     total = sum(freqs.values())
     print(f'\n{name}\n')
+    print(f'size {len(freqs)}\n')
     print('vocab freq-abs freq-rel')
     for tok, freq in sorted(freqs.items()):
         print(f'{tok:4}\t{freq:4}\t{freq / total:4.4f}')
