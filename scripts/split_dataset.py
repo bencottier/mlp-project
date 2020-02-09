@@ -10,6 +10,8 @@ def parse_args():
                         help='Input file or folder: if folder all .txt files will be processed')
     parser.add_argument('-o', '--output_folder', type=str, default=None,
                         help='Output folder')
+    parser.add_argument('-c', '--combine', nargs='+',
+                        help='Write a combined output file (head argument) from the specified input files (tail arguments)')
     parser.add_argument('-s', '--train_split', type=float, default=None,
                         help='Proportion 0..1 of lines to use for training: if specified, splits files further into training and validation sets.')
     parser.add_argument('-t', '--token', type=str, default=None,
@@ -20,7 +22,7 @@ def parse_args():
 
 
 def split_file(input_folder, input_file, output_folder, split=None, 
-    token=None, tar=None):
+    token=None, tar=None, combine=None, mode='w'):
     print(f'Splitting {input_file}')
 
     if split is None:
@@ -36,23 +38,27 @@ def split_file(input_folder, input_file, output_folder, split=None,
         else:
             lines = f.readlines()
 
-    if tar is not None:
-        _, input_file = os.path.split(input_file.name)
+    output_file = input_file
+
+    if combine is not None:
+        output_file = combine
+    elif tar is not None:
+        _, output_file = os.path.split(output_file.name)
 
     # Separate into source and target data
     src_lines = lines[::2]
     tgt_lines = lines[1::2]
 
     def write_data(src_lines, tgt_lines, name='train'):
-        src_file = input_file.replace('.txt', f'_src_{name}.txt')
-        tgt_file = input_file.replace('.txt', f'_tgt_{name}.txt')
+        src_file = output_file.replace('.txt', f'_src_{name}.txt')
+        tgt_file = output_file.replace('.txt', f'_tgt_{name}.txt')
 
         print(os.path.join(output_folder, src_file))
 
-        with open(os.path.join(output_folder, src_file), 'w') as f:
+        with open(os.path.join(output_folder, src_file), mode) as f:
             f.writelines(src_lines)
 
-        with open(os.path.join(output_folder, tgt_file), 'w') as f:
+        with open(os.path.join(output_folder, tgt_file), mode) as f:
             f.writelines(tgt_lines)
 
     # Split into training and optional validation sets, then write
@@ -74,27 +80,48 @@ def main(args):
         print(f'Creating output folder {args.output_folder}')
         os.makedirs(args.output_folder)
 
+    output_folder = args.output_folder
+
+    # Handle file combining
+    if len(args.combine) > 0:
+        combine = args.combine[0]
+        files_to_combine = {f:i for i, f in enumerate(args.combine[1:])}
+    else:
+        combine = None
+        files_to_combine = dict()
+
+    first = True
+
     # Process all files in a folder
     if os.path.isdir(args.input):
         for file in os.listdir(args.input):
             if file.endswith('.txt'):
-                split_file(args.input, file, args.output_folder, 
-                    args.train_split, args.token)
+                if len(args.combine) > 1 and files_to_combine.get(file) is None:
+                    continue
+                mode = 'w' if (first or combine is None) else 'a'
+                split_file(args.input, file, output_folder, 
+                    args.train_split, args.token, combine=combine, mode=mode)
+                first = False
     # Process single file
     elif os.path.isfile(args.input) and args.input.endswith('.txt'):
         folder, f = os.path.split(args.input)
-        split_file(folder, f, args.output_folder, args.train_split, args.token)
+        split_file(folder, f, output_folder, args.train_split, args.token)
     elif os.path.isfile(args.input) and '.tar' in args.input:
         folder, _ = os.path.split(args.input)
         with tarfile.open(args.input) as tar:
             for f in tar:
-                if f.name.endswith('.txt'):
+                if len(args.combine) > 1 and files_to_combine.get(f.name) is None:
+                    continue
+                elif f.name.endswith('.txt'):
                     compressed_folder, _ = os.path.split(f.name)
-                    output_folder = os.path.join(args.output_folder, compressed_folder)
-                    output_folder += '-split'
-                    os.makedirs(output_folder, exist_ok=True)
-                    split_file(folder, f, output_folder, 
-                        args.train_split, args.token, tar=tar)
+                    if len(args.combine) == 0:
+                        output_folder = os.path.join(args.output_folder, compressed_folder)
+                        output_folder += '-split'
+                        os.makedirs(output_folder, exist_ok=True)
+                    mode = 'w' if (first or combine is None) else 'a'
+                    split_file(folder, f, output_folder, args.train_split, 
+                        args.token, tar=tar, combine=combine, mode=mode)
+                    first = False
     else:
         print(f'The input provided is neither a folder nor a file: {args.input}')
 
