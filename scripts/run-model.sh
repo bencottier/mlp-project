@@ -4,7 +4,7 @@
 #SBATCH --partition=Teach-Standard
 #SBATCH --gres=gpu:4
 #SBATCH --mem=12000  # memory in Mb
-#SBATCH --time=0-26:00:00
+#SBATCH --time=0-4:00:00
 
 set -e #terminate the script if error occurs
 
@@ -32,11 +32,15 @@ mkdir -p ${TMPDIR}/datasets/
 export DATASET_DIR=${TMPDIR}/datasets
 
 # Activate the relevant virtual environment:
-source /home/${STUDENT_ID}/miniconda3/bin/activate mlp
+source /home/${STUDENT_ID}/miniconda3/bin/activate mlp-project
 
 #Change following variable according to your system or run with project in current directory
 export CLUSTER_PROJECT_DIR=`pwd`
-export PROJECT_FILE="project-dir.tar.gz"
+export PROJECT_FOLDER="project-dir"
+export PROJECT_FILE="${PROJECT_FOLDER}.tar.gz"
+
+# Compress experiment directory
+# tar -czvf ${PROJECT_FILE} ${CLUSTER_PROJECT_DIR}/${PROJECT_FOLDER}
 
 cd $DATASET_DIR
 
@@ -45,14 +49,17 @@ rsync -ua --progress ${CLUSTER_PROJECT_DIR}/${PROJECT_FILE} ${DATASET_DIR}/
 tar -zxvf ${PROJECT_FILE}
 rm ${PROJECT_FILE}
 
-export SCRATCH_PROJECT_DIR=${DATASET_DIR}/project-dir
+export SCRATCH_PROJECT_DIR=${DATASET_DIR}/${PROEJCT_FOLDER}
 cd $SCRATCH_PROJECT_DIR
+
+#Check GPU device
+python gpu_test.py
 
 #Run training file
 sh train.sh
 cd ..
 
 #Transfer saved models from scratch dataset directory to cluster 
-tar -zcvf ${PROJECT_FILE}.saved.tar.gz $SCRATCH_PROJECT_DIR
-rsync -ua --progress ${PROJECT_FILE}.saved_base.tar.gz $CLUSTER_PROJECT_DIR
+tar -zcvf ${PROJECT_FOLDER}.saved.tar.gz ${PROJECT_FOLDER}
+rsync -ua --progress ${PROJECT_FILE}.saved.tar.gz $CLUSTER_PROJECT_DIR
 rm -r $DATASET_DIR
