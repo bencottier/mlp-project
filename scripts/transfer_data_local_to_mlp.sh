@@ -3,8 +3,9 @@
 show_help()
 {
     echo "Example usage"
-    echo "./transfer_data_local_to_mlp.sh -s s1556895 -l /Users/ff/test.txt -m /home/s1556895/"
-    echo "./transfer_data_local_to_mlp.sh --student_id s1556895 --local_path /Users/ff/test.txt --mlp_path /home/s1556895/"
+    echo "    ./transfer_data_local_to_mlp.sh -s s1556895 -l /Users/ff/test.txt -m /home/s1556895/"
+    echo "    ./transfer_data_local_to_mlp.sh --student_id s1556895 --local_path /Users/ff/test.txt --mlp_path /home/s1556895/"
+    echo ""
 } 
 
 while [[ $# -gt 0 ]]
@@ -34,6 +35,12 @@ case $key in
     ;;
 esac
 done
+
+if [ -z "${STUDENT_ID}" ] || [ -z "${MLP_PATH_FOLDER}" ] || [ -z "${LOCAL_PATH}" ] ; then
+    echo "Provide the correct arguments"
+    show_help
+    exit 1
+fi
 
 echo "STUDENT ID: ${STUDENT_ID}"
 echo "MLP_PATH_FOLDER: ${MLP_PATH_FOLDER}"

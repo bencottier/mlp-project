@@ -2,9 +2,10 @@
 
 show_help()
 {
-    echo "Example usage"
-    echo "./transfer_data_mlp_to_local.sh -s s1556895 -m /home/s1556895/test.txt -l /Users/ff"
-    echo "./transfer_data_mlp_to_local.sh --student_id s1556895 --mlp_path /home/s1556895/test.txt --local_path /Users/ff"
+    echo "Example usage:"
+    echo "    ./transfer_data_mlp_to_local.sh -s s1556895 -m /home/s1556895/test.txt -l /Users/ff"
+    echo "    ./transfer_data_mlp_to_local.sh --student_id s1556895 --mlp_path /home/s1556895/test.txt --local_path /Users/ff"
+    echo ""
 } 
 
 
@@ -36,9 +37,16 @@ case $key in
 esac
 done
 
+if [ -z "${STUDENT_ID}" ] || [ -z "${MLP_PATH_FOLDER}" ] || [ -z "${LOCAL_PATH}" ] ; then
+    echo "Provide the correct arguments"
+    show_help
+    exit 1
+fi
+
 echo "STUDENT ID: ${STUDENT_ID}"
 echo "MLP_PATH_FOLDER: ${MLP_PATH_FOLDER}"
 echo "LOCAL_PATH: ${LOCAL_PATH}"
-
+echo ""
+echo "rsync -ua --progress ${STUDENT_ID}@mlp.inf.ed.ac.uk:${MLP_PATH_FOLDER} ${LOCAL_PATH}"
 
 rsync -ua --progress ${STUDENT_ID}@mlp.inf.ed.ac.uk:${MLP_PATH_FOLDER} ${LOCAL_PATH}
