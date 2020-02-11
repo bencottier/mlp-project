@@ -1,10 +1,10 @@
 #!/bin/sh
 #SBATCH -N 1	  # nodes requested
 #SBATCH -n 1	  # tasks requested
-#SBATCH --partition=Teach-Standard
+#SBATCH --partition=PGR-Standard
 #SBATCH --gres=gpu:4
 #SBATCH --mem=12000  # memory in Mb
-#SBATCH --time=0-4:00:00
+#SBATCH --time=0-24:00:00
 
 set -e #terminate the script if error occurs
 
@@ -49,7 +49,7 @@ rsync -ua --progress ${CLUSTER_PROJECT_DIR}/${PROJECT_FILE} ${DATASET_DIR}/
 tar -zxvf ${PROJECT_FILE}
 rm ${PROJECT_FILE}
 
-export SCRATCH_PROJECT_DIR=${DATASET_DIR}/${PROEJCT_FOLDER}
+export SCRATCH_PROJECT_DIR=${DATASET_DIR}/${PROJECT_FOLDER}
 cd $SCRATCH_PROJECT_DIR
 
 #Check GPU device
@@ -61,5 +61,5 @@ cd ..
 
 #Transfer saved models from scratch dataset directory to cluster 
 tar -zcvf ${PROJECT_FOLDER}.saved.tar.gz ${PROJECT_FOLDER}
-rsync -ua --progress ${PROJECT_FILE}.saved.tar.gz $CLUSTER_PROJECT_DIR
+rsync -ua --progress ${PROJECT_FOLDER}.saved.tar.gz $CLUSTER_PROJECT_DIR
 rm -r $DATASET_DIR

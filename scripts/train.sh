@@ -2,10 +2,10 @@
 
 # WARNING: CHECK ALL VARIABLES AND COMMANDS CAREFULLY
 
-TASK="calculus__differentiate"
+TASK="extrapolate"
 DATADIR="data/bin/${TASK}"
 EXPDIR="exp/${TASK}"
-CONFIG="config-transformer-small.yml"
+CONFIG="config-transformer-medium.yml"
 
 echo "TASK: "$TASK
 echo "DATADIR: "$DATADIR
