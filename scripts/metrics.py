@@ -45,9 +45,13 @@ def main(ref_file, hyp_file):
         print(bleu)
         print('')
 
-    # TODO better aggregation for BLEU than an average?
-    print(f'AVG BLEU: {bleus.mean():.4f}')
-    print(f'AVG ACC: {accs.mean():.4f}')
+    list_of_references = [[s.strip().split(' ')] for s in ref_lines]
+    hypotheses = [s.strip().split(' ') for s in hyp_lines]
+    corpus_bleu = nltk.translate.bleu_score.corpus_bleu(list_of_references, hypotheses)
+
+    print(f'Average sentence BLEU: {bleus.mean():.4f}')
+    print(f'Corpus BLEU: {corpus_bleu:.4f}')
+    print(f'Average accuracy: {accs.mean():.4f}')
 
 
 if __name__ == '__main__':
