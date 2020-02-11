@@ -45,5 +45,7 @@ fi
 echo "STUDENT ID: ${STUDENT_ID}"
 echo "MLP_PATH_FOLDER: ${MLP_PATH_FOLDER}"
 echo "LOCAL_PATH: ${LOCAL_PATH}"
+echo ""
+echo "rsync -ua --progress ${LOCAL_PATH} ${STUDENT_ID}@mlp.inf.ed.ac.uk:${MLP_PATH_FOLDER}"
 
-rsync -ua --progress LOCAL_PATH ${STUDENT_ID}@mlp.inf.ed.ac.uk:${MLP_PATH_FOLDER}
+rsync -ua --progress ${LOCAL_PATH} ${STUDENT_ID}@mlp.inf.ed.ac.uk:${MLP_PATH_FOLDER}
