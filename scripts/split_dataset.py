@@ -83,7 +83,7 @@ def main(args):
     output_folder = args.output_folder
 
     # Handle file combining
-    if len(args.combine) > 0:
+    if args.combine and len(args.combine) > 0:
         combine = args.combine[0]
         files_to_combine = {f:i for i, f in enumerate(args.combine[1:])}
     else:
