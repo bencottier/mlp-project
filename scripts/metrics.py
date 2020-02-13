@@ -11,9 +11,9 @@ import numpy as np
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument('ref', type=str, default=None,
+    parser.add_argument('-ref', type=str, default=None,
                         help='Reference filename: contains ground-truth sequences')
-    parser.add_argument('hyp', type=str, default=None,
+    parser.add_argument('-hyp', type=str, default=None,
                         help='Hypothesis filename: contains predicted sequences')
     args = parser.parse_args()
 
@@ -39,11 +39,11 @@ def main(ref_file, hyp_file):
         bleu = nltk.translate.bleu_score.sentence_bleu(refs, hyp)
         bleus[i] = bleu
         accs[i] = np.allclose(bleu, 1.0)
-        print(i)
-        print(ref)
-        print(hyp)
-        print(bleu)
-        print('')
+        # print(i)
+        # print(ref)
+        # print(hyp)
+        # print(bleu)
+        # print('')
 
     list_of_references = [[s.strip().split(' ')] for s in ref_lines]
     hypotheses = [s.strip().split(' ') for s in hyp_lines]
