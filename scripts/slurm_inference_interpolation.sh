@@ -11,33 +11,37 @@ set -e #terminate the script if error occurs
 
 
 # These need to be changed before running the script
-export EXPERIMENT_NAME="extrapolation_baseline"
+export EXPERIMENT_NAME="interpolation_baseline"
 export MODEL_FOLDER="/home/s1556895/baseline"
-export MODEL_NAME="baseline_extrapolation"
+export MODEL_NAME="baseline_interpolation"
 export PROJECT_FILE="project-dir.tar.gz"
 export CHECKPOINT="14000"
 export MODEL="model"
 
-declare -a TASKS=("algebra__polynomial_roots_big_src_test.txt"
-"arithmetic__mixed_longer_src_test.txt"
-"comparison__kth_biggest_more_src_test.txt"
-"numbers__round_number_big_src_test.txt"
-"arithmetic__add_or_sub_big_src_test.txt"           
-"arithmetic__mul_big_src_test.txt"          
-"comparison__sort_more_src_test.txt"
-"probability__swr_p_level_set_more_samples_src_test.txt"
-"arithmetic__add_sub_multiple_longer_src_test.txt"
-"arithmetic__mul_div_multiple_longer_src_test.txt"
+declare -a TASKS=("algebra__polynomial_roots_src_test.txt"
+"arithmetic__add_or_sub_src_test.txt"
+"arithmetic__add_sub_multiple_src_test.txt"
+"arithmetic__div_src_test.txt"
+"arithmetic__mixed_src_test.txt"
+"arithmetic__mul_div_multiple_src_test.txt"
+"arithmetic__mul_src_test.txt"
+"comparison__closest_src_test.txt"
+"comparison__kth_biggest_src_test.txt"
+"comparison__sort_src_test.txt"
 "measurement__conversion_src_test.txt"
-"probability__swr_p_sequence_more_samples_src_test.txt"
-"arithmetic__div_big_src_test.txt"
-"comparison__closest_more_src_test.txt"
-"numbers__place_value_big_src_test.txt")
+"numbers__place_value_src_test.txt"
+"numbers__round_number_src_test.txt"
+"probability__swr_p_level_set_src_test.txt"
+"probability__swr_p_sequence_src_test.txt")
+
+
+
+
 
 
 echo ""
 echo "EXPERIMENT_NAME: ${EXPERIMENT_NAME}"
-echo "TASK: ${TASK}"
+echo "TASKS: ${TASKS}"
 echo "PROJECT_FILE: ${PROJECT_FILE}"
 echo "CONFIG_FILE: ${CONFIG_FILE}"
 echo ""
@@ -102,7 +106,7 @@ echo ""
 cd ${CLUSTER_DATASET_DIR}
 # Transfer data from cluster to scratch dataset directory
 # Regex only takes the task specified (several tasks have the "composed" version)
-rsync -ua --progress ${CLUSTER_HOME_DIR}/baseline_src.tar.gz ${NODE_TXT_DIR}
+rsync -ua --progress ${CLUSTER_HOME_DIR}/baseline_inter_src.tar.gz ${NODE_TXT_DIR}
 echo "wtf2"
 
 cd ${CLUSTER_HOME_DIR}
@@ -116,7 +120,7 @@ echo ""
 # Move to scratch directory
 cd ${NODE_TXT_DIR}
 # Unzip and delete zip file
-tar -zxvf baseline_src.tar.gz
+tar -zxvf baseline_inter_src.tar.gz
 
 
 echo "hereeeee"
