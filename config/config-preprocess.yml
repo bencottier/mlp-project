@@ -1,0 +1,20 @@
+train_src: 
+ - ./data/train-easy-split/arithmetic__add_or_sub_src_train.txt 
+ - ./data/train-medium-split/arithmetic__add_or_sub_src_train.txt 
+ - ./data/train-hard-split/arithmetic__add_or_sub_src_train.txt 
+
+train_tgt:
+ - ./data/train-easy-split/arithmetic__add_or_sub_tgt_train.txt 
+ - ./data/train-medium-split/arithmetic__add_or_sub_tgt_train.txt 
+ - ./data/train-hard-split/arithmetic__add_or_sub_tgt_train.txt 
+
+valid_src: ./data/train-easy-split/arithmetic__add_or_sub_src_valid.txt 
+# - ./data/train-medium-split/arithmetic__add_or_sub_src_valid.txt 
+# - ./data/train-hard-split/arithmetic__add_or_sub_src_valid.txt
+
+valid_tgt: ./data/train-easy-split/arithmetic__add_or_sub_tgt_valid.txt 
+# - ./data/train-medium-split/arithmetic__add_or_sub_tgt_valid.txt 
+# - ./data/train-hard-split/arithmetic__add_or_sub_tgt_valid.txt 
+
+save_data: processed_data/data
+train_ids: [E, M, H]
