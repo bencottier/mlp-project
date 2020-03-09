@@ -96,7 +96,7 @@ def main(args):
     if os.path.isdir(args.input):
         for file in os.listdir(args.input):
             if file.endswith('.txt'):
-                if len(args.combine) > 1 and files_to_combine.get(file) is None:
+                if args.combine and len(args.combine) > 1 and files_to_combine.get(file) is None:
                     continue
                 mode = 'w' if (first or combine is None) else 'a'
                 split_file(args.input, file, output_folder, 
