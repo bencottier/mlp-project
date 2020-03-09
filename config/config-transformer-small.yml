@@ -1,14 +1,14 @@
-data: {{data_dir}}/data
-save_model: {{exp_dir}}/model
-log_file: {{exp_dir}}/log.txt
+data: {{data_dir}}/data/data
+save_model: {{exp_dir}}/model/model
+log_file: {{exp_dir}}/log/log
 # train_from: exp/calculus__differentiate/model_step_1000.pt
 save_checkpoint_steps: 1000
-keep_checkpoint: 3
+keep_checkpoint: 10
 seed: 20200127
-train_steps: 1000
-valid_steps: 100
+train_steps: 100000
+valid_steps: 1000
 # warmup_steps: 8000
-report_every: 10
+report_every: 100
 
 decoder_type: transformer
 encoder_type: transformer
@@ -18,7 +18,10 @@ layers: 2
 transformer_ff: 256
 heads: 1
 
-# accum_count: 2
+early_stopping: 9
+early_stopping_criteria: acc
+# Set accum_count for averaging in risk minimisation
+# accum_count: 3
 optim: adam
 adam_beta1: 0.9
 adam_beta2: 0.995
@@ -32,7 +35,7 @@ batch_size: 1024
 dropout: 0.1
 label_smoothing: 0.1
 
-max_generator_batches: 2
+# max_generator_batches: 2
 
 param_init: 0.0
 param_init_glorot: 'true'
