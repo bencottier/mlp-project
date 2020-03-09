@@ -17,6 +17,8 @@ def parse_args():
 
 
 def merge_files(files, f_type, output_folder):
+    os.makedirs(output_folder, exist_ok=True)
+
     files_to_merge = [f for f in files if f_type in f]
 
     if len(files_to_merge) == 0:
