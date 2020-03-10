@@ -1,0 +1,56 @@
+data: {{data_dir}}/data/data
+save_model: {{exp_dir}}/model/model
+log_file: {{exp_dir}}/log/log
+# train_from: exp/calculus__differentiate/model_step_1000.pt
+save_checkpoint_steps: 1000
+keep_checkpoint: 14
+seed: 20200127
+train_steps: 40000
+valid_steps: 1000
+# warmup_steps: 8000
+report_every: 100
+
+# Risk minimization
+data_ids: [E, M, H]
+data_weights: [1, 1, 1]
+# Set accum_count to average the loss - matches number of data_ids
+accum_count: 3
+risk_min: irm
+risk_anneal_steps: 27000
+risk_penalty_weight: [0.0001, 0.01]
+
+decoder_type: transformer
+encoder_type: transformer
+word_vec_size: 128
+rnn_size: 128
+layers: 3
+transformer_ff: 512
+heads: 4
+
+# early_stopping: 3
+# early_stopping_criteria: accuracy
+optim: adam
+adam_beta1: 0.9
+adam_beta2: 0.995
+# decay_method: noam
+learning_rate: 0.0006
+max_grad_norm: 0.1
+
+batch_size: 1024
+max_generator_batches: 1024
+valid_batch_size: 1024
+# batch_type: tokens
+# normalization: tokens
+dropout: 0.1
+label_smoothing: 0.1
+
+param_init: 0.0
+param_init_glorot: 'true'
+position_encoding: 'true'
+
+world_size: 4
+gpu_ranks:
+- 0
+- 1
+- 2
+- 3
