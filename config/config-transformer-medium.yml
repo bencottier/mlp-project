@@ -12,16 +12,15 @@ report_every: 100
 
 decoder_type: transformer
 encoder_type: transformer
-word_vec_size: 64
-rnn_size: 64
-layers: 2
-transformer_ff: 256
-heads: 1
+word_vec_size: 128
+rnn_size: 128
+layers: 3
+transformer_ff: 512
+heads: 4
 
 early_stopping: 9
-early_stopping_criteria: acc
-# Set accum_count for averaging in risk minimisation
-# accum_count: 3
+early_stopping_criteria: ppl
+# accum_count: 2
 optim: adam
 adam_beta1: 0.9
 adam_beta2: 0.995
@@ -35,15 +34,15 @@ batch_size: 1024
 dropout: 0.1
 label_smoothing: 0.1
 
-# max_generator_batches: 2
+max_generator_batches: 2
 
 param_init: 0.0
 param_init_glorot: 'true'
 position_encoding: 'true'
 
-# world_size: 4
-# gpu_ranks:
-# - 0
-# - 1
-# - 2
-# - 3
+world_size: 4
+gpu_ranks:
+- 0
+- 1
+- 2
+- 3

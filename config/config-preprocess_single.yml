@@ -1,0 +1,17 @@
+train_src: 
+ - ./dataset/train-easy-split/{{task}}_src_train.txt 
+ - ./dataset/train-medium-split/{{task}}_src_train.txt 
+ - ./dataset/train-hard-split/{{task}}_src_train.txt 
+
+train_tgt:
+ - ./dataset/train-easy-split/{{task}}_tgt_train.txt 
+ - ./dataset/train-medium-split/{{task}}_tgt_train.txt 
+ - ./dataset/train-hard-split/{{task}}_tgt_train.txt 
+
+valid_src: ./dataset/train-merged-split/merged_{{task}}_src_valid.txt 
+
+valid_tgt: ./dataset/train-merged-split/merged_{{task}}_tgt_valid.txt 
+
+save_data: ./dataset/bin/{{task}}/data
+train_ids: [E, M, H]
+shard_size: 83334

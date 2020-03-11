@@ -1,20 +1,17 @@
 train_src: 
- - ./data/train-easy-split/arithmetic__add_or_sub_src_train.txt 
- - ./data/train-medium-split/arithmetic__add_or_sub_src_train.txt 
- - ./data/train-hard-split/arithmetic__add_or_sub_src_train.txt 
+ - ./dataset/merged-train-easy-split-reduced/merged_src_train_shuf.txt 
+ - ./dataset/merged-train-medium-split-reduced/merged_src_train_shuf.txt 
+ - ./dataset/merged-train-hard-split-reduced/merged_src_train_shuf.txt 
 
 train_tgt:
- - ./data/train-easy-split/arithmetic__add_or_sub_tgt_train.txt 
- - ./data/train-medium-split/arithmetic__add_or_sub_tgt_train.txt 
- - ./data/train-hard-split/arithmetic__add_or_sub_tgt_train.txt 
+ - ./dataset/merged-train-easy-split-reduced/merged_tgt_train_shuf.txt 
+ - ./dataset/merged-train-medium-split-reduced/merged_tgt_train_shuf.txt 
+ - ./dataset/merged-train-hard-split-reduced/merged_tgt_train_shuf.txt 
 
-valid_src: ./data/train-easy-split/arithmetic__add_or_sub_src_valid.txt 
-# - ./data/train-medium-split/arithmetic__add_or_sub_src_valid.txt 
-# - ./data/train-hard-split/arithmetic__add_or_sub_src_valid.txt
+valid_src: ./dataset/merged-valid-split-reduced/merged_src_valid_small.txt 
 
-valid_tgt: ./data/train-easy-split/arithmetic__add_or_sub_tgt_valid.txt 
-# - ./data/train-medium-split/arithmetic__add_or_sub_tgt_valid.txt 
-# - ./data/train-hard-split/arithmetic__add_or_sub_tgt_valid.txt 
+valid_tgt: ./dataset/merged-valid-split-reduced/merged_tgt_valid_small.txt 
 
-save_data: processed_data/data
+save_data: ./dataset/bin/merged/data
 train_ids: [E, M, H]
+# shard_size: 300000
