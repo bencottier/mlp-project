@@ -17,7 +17,7 @@ data_weights: [1, 1, 1]
 accum_count: 3
 risk_min: irm
 risk_anneal_steps: 27000
-risk_penalty_weight: [0.0001, 0.01]
+risk_penalty_weight: [0.0001, 1.0, 10.0]
 
 decoder_type: transformer
 encoder_type: transformer
@@ -35,6 +35,9 @@ adam_beta2: 0.995
 # decay_method: noam
 learning_rate: 0.0006
 max_grad_norm: 0.1
+learning_rate_decay: 0.5
+start_decay_steps: 16667
+decay_steps: 3333
 
 batch_size: 1024
 max_generator_batches: 1024
