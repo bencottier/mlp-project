@@ -4,6 +4,7 @@ experiments/
 slurm/
 baseline*/
 *.out
+config*.*.yml
 
 # Created by https://www.gitignore.io/api/linux,macos,python,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=linux,macos,python,visualstudiocode
