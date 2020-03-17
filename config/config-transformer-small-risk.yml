@@ -6,18 +6,18 @@ save_checkpoint_steps: 10
 keep_checkpoint: 2
 seed: 20200127
 train_steps: 20
-valid_steps: 10
+valid_steps: 21
 # warmup_steps: 8000
 report_every: 1
 
 # Risk minimization
-data_ids: [E, M]
-data_weights: [1, 1]
+data_ids: [E, M, H]
+data_weights: [1, 1, 1]
 # Set accum_count to average the loss - matches number of data_ids
 accum_count: 3
 risk_min: irm
 risk_anneal_steps: 11
-risk_penalty_weight: [0.0001, 1.0]
+risk_penalty_weight: [0.0001, 1.0, 1000.0]
 
 decoder_type: transformer
 encoder_type: transformer
@@ -35,6 +35,9 @@ adam_beta2: 0.995
 # decay_method: noam
 learning_rate: 0.0006
 max_grad_norm: 0.1
+learning_rate_decay: 0.5
+start_decay_steps: 6
+decay_steps: 5
 
 batch_size: 1024
 max_generator_batches: 1024
