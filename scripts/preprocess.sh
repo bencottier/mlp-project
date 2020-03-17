@@ -2,7 +2,7 @@
 
 # WARNING: CHECK ALL VARIABLES AND COMMANDS CAREFULLY
 
-TASK="merged"
+TASK="merged-ns"
 BINDIR="dataset/bin/${TASK}"
 CONFIG="config/config-preprocess"
 
