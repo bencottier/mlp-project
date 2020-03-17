@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
+import pyonmttok
 import tarfile
 import argparse
 import os
+import re
+
+
+TOKENIZER = pyonmttok.Tokenizer("aggressive", joiner_annotate=False, segment_numbers=True)
 
 
 def parse_args():
@@ -15,10 +20,28 @@ def parse_args():
     parser.add_argument('-s', '--train_split', type=float, default=None,
                         help='Proportion 0..1 of lines to use for training: if specified, splits files further into training and validation sets.')
     parser.add_argument('-t', '--token', type=str, default=None,
-                        help='Type of tokenisation: word (default), char, hybrid (not implemented)')
+                        help='Type of tokenisation: word (default), char, hybrid')
     args = parser.parse_args()
 
     return args
+
+
+def separate_prob_sequences(line):
+    var_prefix = 'without replacement from '
+    evt_prefix = 'prob of sequence '
+    sequence_re = re.compile('[a-z]+[.? ]')
+    for prefix in [var_prefix, evt_prefix]:
+        prefix_pos = line.find(prefix)
+        if prefix_pos >= 0:
+            tail = line[prefix_pos + len(prefix):]
+            match = re.match(sequence_re, tail)
+            if match:
+                group = match.group()
+                group_split = ' '.join(group)
+                start = prefix_pos + len(prefix) + match.start()
+                end = prefix_pos + len(prefix) + match.end()
+                line = line[:start] + group_split + line[end:]
+    return line
 
 
 def split_file(input_folder, input_file, output_folder, split=None, 
@@ -35,8 +58,15 @@ def split_file(input_folder, input_file, output_folder, split=None,
         # writelines() does NOT add newline on its now
         if token == 'char':
             lines = [' '.join(line.decode().replace(' ', '_')) for line in f.readlines()]
+        elif token == 'hybrid':
+            lines = [line.decode() for line in f.readlines()]
+            if 'probability__swr' in input_file:
+                # Split up sequences of letters so they don't count as words
+                lines = [separate_prob_sequences(line) for line in lines]
+            lines = [' '.join(TOKENIZER.tokenize(line)[0]) + '\n'
+                for line in lines]
         else:
-            lines = f.readlines()
+            lines = [line.decode() for line in f.readlines()]
 
     output_file = input_file
 
