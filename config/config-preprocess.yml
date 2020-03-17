@@ -1,17 +1,14 @@
-train_src: 
- - ./dataset/merged-train-easy-split-reduced/merged_src_train_shuf.txt 
- - ./dataset/merged-train-medium-split-reduced/merged_src_train_shuf.txt 
- - ./dataset/merged-train-hard-split-reduced/merged_src_train_shuf.txt 
+train_src: ./dataset/merged-train-split-ns/merged_src_train_shuf.txt 
 
-train_tgt:
- - ./dataset/merged-train-easy-split-reduced/merged_tgt_train_shuf.txt 
- - ./dataset/merged-train-medium-split-reduced/merged_tgt_train_shuf.txt 
- - ./dataset/merged-train-hard-split-reduced/merged_tgt_train_shuf.txt 
+train_tgt: ./dataset/merged-train-split-ns/merged_tgt_train_shuf.txt 
 
-valid_src: ./dataset/merged-valid-split-reduced/merged_src_valid_small.txt 
+valid_src: ./dataset/merged-valid-split-ns/merged_src_valid_small.txt 
 
-valid_tgt: ./dataset/merged-valid-split-reduced/merged_tgt_valid_small.txt 
+valid_tgt: ./dataset/merged-valid-split-ns/merged_tgt_valid_small.txt 
 
-save_data: ./dataset/bin/merged/data
-train_ids: [E, M, H]
+save_data: ./dataset/bin/merged-ns/data
 # shard_size: 300000
+
+num_threads: 2
+
+overwrite: True
