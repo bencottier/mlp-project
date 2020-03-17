@@ -1,0 +1,294 @@
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/algebra__polynomial_roots_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_algebra__polynomial_roots_src_test.txt_100000.txt
+Average sentence BLEU: 0.4445
+Corpus BLEU: 0.5325
+Binary count: 1333.0/10000
+Average accuracy: 0.1333
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/arithmetic__add_or_sub_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_arithmetic__add_or_sub_src_test.txt_100000.txt
+Average sentence BLEU: 0.9743
+Corpus BLEU: 0.9827
+Binary count: 9332.0/10000
+Average accuracy: 0.9332
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/arithmetic__add_sub_multiple_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_arithmetic__add_sub_multiple_src_test.txt_100000.txt
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Average sentence BLEU: 0.1356
+Corpus BLEU: 0.0000
+Binary count: 798.0/10000
+Average accuracy: 0.0798
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/arithmetic__div_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_arithmetic__div_src_test.txt_100000.txt
+Average sentence BLEU: 0.5899
+Corpus BLEU: 0.7388
+Binary count: 6799.0/10000
+Average accuracy: 0.6799
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/arithmetic__mixed_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_arithmetic__mixed_src_test.txt_100000.txt
+Average sentence BLEU: 0.1662
+Corpus BLEU: 0.1650
+Binary count: 1036.0/10000
+Average accuracy: 0.1036
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/arithmetic__mul_div_multiple_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_arithmetic__mul_div_multiple_src_test.txt_100000.txt
+Average sentence BLEU: 0.3084
+Corpus BLEU: 0.3371
+Binary count: 3647.0/10000
+Average accuracy: 0.3647
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/arithmetic__mul_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_arithmetic__mul_src_test.txt_100000.txt
+Average sentence BLEU: 0.5715
+Corpus BLEU: 0.6230
+Binary count: 4736.0/10000
+Average accuracy: 0.4736
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/comparison__closest_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_comparison__closest_src_test.txt_100000.txt
+Average sentence BLEU: 0.3174
+Corpus BLEU: 0.4840
+Binary count: 5710.0/10000
+Average accuracy: 0.5710
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/comparison__kth_biggest_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_comparison__kth_biggest_src_test.txt_100000.txt
+Average sentence BLEU: 0.1677
+Corpus BLEU: 0.2674
+Binary count: 2992.0/10000
+Average accuracy: 0.2992
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/comparison__sort_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_comparison__sort_src_test.txt_100000.txt
+Average sentence BLEU: 0.9985
+Corpus BLEU: 0.9981
+Binary count: 9773.0/10000
+Average accuracy: 0.9773
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/measurement__conversion_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_measurement__conversion_src_test.txt_100000.txt
+Average sentence BLEU: 0.0857
+Corpus BLEU: 0.0963
+Binary count: 1.0/10000
+Average accuracy: 0.0001
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/numbers__place_value_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_numbers__place_value_src_test.txt_100000.txt
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Average sentence BLEU: 0.1778
+Corpus BLEU: 0.0000
+Binary count: 10000.0/10000
+Average accuracy: 1.0000
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/numbers__round_number_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_numbers__round_number_src_test.txt_100000.txt
+Average sentence BLEU: 0.9181
+Corpus BLEU: 0.9588
+Binary count: 9562.0/10000
+Average accuracy: 0.9562
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/probability__swr_p_level_set_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_probability__swr_p_level_set_src_test.txt_100000.txt
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Average sentence BLEU: 0.0056
+Corpus BLEU: 0.0000
+Binary count: 3.0/10000
+Average accuracy: 0.0003
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/interpolate-split/probability__swr_p_sequence_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_interpolation_100k/pred_valid_probability__swr_p_sequence_src_test.txt_100000.txt
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Average sentence BLEU: 0.0085
+Corpus BLEU: 0.0000
+Binary count: 73.0/10000
+Average accuracy: 0.0073
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/algebra__polynomial_roots_big_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_algebra__polynomial_roots_big_src_test.txt_100000.txt
+Average sentence BLEU: 0.3099
+Corpus BLEU: 0.3687
+Binary count: 430.0/10000
+Average accuracy: 0.0430
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/arithmetic__add_or_sub_big_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_arithmetic__add_or_sub_big_src_test.txt_100000.txt
+Average sentence BLEU: 0.9201
+Corpus BLEU: 0.9377
+Binary count: 7744.0/10000
+Average accuracy: 0.7744
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/arithmetic__add_sub_multiple_longer_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_arithmetic__add_sub_multiple_longer_src_test.txt_100000.txt
+Average sentence BLEU: 0.1107
+Corpus BLEU: 0.0473
+Binary count: 125.0/10000
+Average accuracy: 0.0125
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/arithmetic__div_big_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_arithmetic__div_big_src_test.txt_100000.txt
+Average sentence BLEU: 0.4907
+Corpus BLEU: 0.6334
+Binary count: 5306.0/10000
+Average accuracy: 0.5306
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/arithmetic__mixed_longer_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_arithmetic__mixed_longer_src_test.txt_100000.txt
+Average sentence BLEU: 0.0758
+Corpus BLEU: 0.0187
+Binary count: 65.0/10000
+Average accuracy: 0.0065
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/arithmetic__mul_big_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_arithmetic__mul_big_src_test.txt_100000.txt
+Average sentence BLEU: 0.4190
+Corpus BLEU: 0.4753
+Binary count: 3236.0/10000
+Average accuracy: 0.3236
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/arithmetic__mul_div_multiple_longer_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_arithmetic__mul_div_multiple_longer_src_test.txt_100000.txt
+Average sentence BLEU: 0.0766
+Corpus BLEU: 0.0280
+Binary count: 261.0/10000
+Average accuracy: 0.0261
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/comparison__closest_more_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_comparison__closest_more_src_test.txt_100000.txt
+Average sentence BLEU: 0.1766
+Corpus BLEU: 0.2575
+Binary count: 2994.0/10000
+Average accuracy: 0.2994
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/comparison__kth_biggest_more_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_comparison__kth_biggest_more_src_test.txt_100000.txt
+Average sentence BLEU: 0.0542
+Corpus BLEU: 0.0536
+Binary count: 1006.0/10000
+Average accuracy: 0.1006
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/comparison__sort_more_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_comparison__sort_more_src_test.txt_100000.txt
+Average sentence BLEU: 0.9440
+Corpus BLEU: 0.9460
+Binary count: 4800.0/10000
+Average accuracy: 0.4800
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/measurement__conversion_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_measurement__conversion_src_test.txt_100000.txt
+Average sentence BLEU: 0.2234
+Corpus BLEU: 0.2164
+Binary count: 0.0/10000
+Average accuracy: 0.0000
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/numbers__place_value_big_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_numbers__place_value_big_src_test.txt_100000.txt
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Average sentence BLEU: 0.0889
+Corpus BLEU: 0.0000
+Binary count: 4997.0/10000
+Average accuracy: 0.4997
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/numbers__round_number_big_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_numbers__round_number_big_src_test.txt_100000.txt
+Average sentence BLEU: 0.8981
+Corpus BLEU: 0.9183
+Binary count: 8790.0/10000
+Average accuracy: 0.8790
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/probability__swr_p_level_set_more_samples_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_probability__swr_p_level_set_more_samples_src_test.txt_100000.txt
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Average sentence BLEU: 0.0030
+Corpus BLEU: 0.0000
+Binary count: 6.0/10000
+Average accuracy: 0.0006
+
+Reference file: /Users/ff/dev/mathematics_dataset-v1.0/extrapolate-split/probability__swr_p_sequence_more_samples_tgt_test.txt
+Hypothesis file: /Users/ff/results_20200303/results_extrapolation_100k/pred_valid_probability__swr_p_sequence_more_samples_src_test.txt_100000.txt
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/Users/ff/.pyenv/versions/pymlp/lib/python3.7/site-packages/nltk/translate/bleu_score.py:523: UserWarning:
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Average sentence BLEU: 0.0067
+Corpus BLEU: 0.0000
+Binary count: 115.0/10000
+Average accuracy: 0.0115
