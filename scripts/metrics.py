@@ -32,13 +32,19 @@ def main(ref_file, hyp_file):
 
     bleus = np.zeros(len(ref_lines))
     accs = np.zeros(len(ref_lines))
+
+    # https://www.nltk.org/_modules/nltk/translate/bleu_score.html
+    smoothing_function = nltk.translate.bleu_score.SmoothingFunction().method1
+
     for i, (ref_line, hyp_line) in enumerate(zip(ref_lines, hyp_lines)):
         ref = ref_line.strip().split(' ')
         refs = [ref]
         hyp = hyp_line.strip().split(' ')
-        bleu = nltk.translate.bleu_score.sentence_bleu(refs, hyp)
+        bleu = nltk.translate.bleu_score.sentence_bleu(refs, hyp, smoothing_function=smoothing_function)
         bleus[i] = bleu
-        accs[i] = np.allclose(bleu, 1.0)
+        accs[i] = (1 if np.array_equal(ref,hyp) else 0)
+        #accs[i] = np.allclose(bleu, 1.0)
+
         # print(i)
         # print(ref)
         # print(hyp)
@@ -51,6 +57,7 @@ def main(ref_file, hyp_file):
 
     print(f'Average sentence BLEU: {bleus.mean():.4f}')
     print(f'Corpus BLEU: {corpus_bleu:.4f}')
+    print(f'Binary count: {accs.sum()}/{len(ref_lines)}')
     print(f'Average accuracy: {accs.mean():.4f}')
 
 
